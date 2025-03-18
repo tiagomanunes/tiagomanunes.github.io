@@ -95,3 +95,13 @@ code {
 .social-icons a:hover {
   color: #0088cc; /* Slightly darker blue on hover */
 }
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  transition: filter 0.3s ease-in-out;
+}
+
+.social-icons a.custom-icon:hover img {
+  filter: invert(79%) sepia(100%) saturate(240%) hue-rotate(50deg) brightness(115%) contrast(105%); /* Simulate HTB's electric-green */
+}
