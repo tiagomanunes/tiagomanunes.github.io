@@ -1,6 +1,6 @@
 title: "Tiago Nunes"
 description: "Tracking my InfoSec journey."
-baseurl: "" # Set this if your site is inside a subfolder
+baseurl: ""
 url: "https://tiagomanunes.github.io"
 
 collections:
