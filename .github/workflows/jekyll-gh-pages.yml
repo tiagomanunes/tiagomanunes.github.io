@@ -6,6 +6,9 @@ on:
   push:
     branches: ["main"]
 
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -22,12 +25,42 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Fetch data from HTB
+  fetch-api-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+#      - name: Install dependencies
+#        run: pip install requests
+
+      - name: Fetch HTB API Data
+        run: python src/fetch_htb_data.py
+
+      - name: Save API data as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: htb-data
+          path: htb_data.json
+
   # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Download API data artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: htb-data
+      - name: Move htb_data.json to Jekyll’s _data folder
+        run: mv htb_data.json _data/htb_data.json
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
