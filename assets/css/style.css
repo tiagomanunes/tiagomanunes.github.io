@@ -97,9 +97,18 @@ code {
 }
 
 .social-icons img {
-  width: 24px;
-  height: 24px;
+  width: 55px;
+  height: 55px;
+  vertical-align: middle;
   transition: filter 0.3s ease-in-out;
+}
+
+.social-icons a.custom-icon {
+  display: inline-flex;  
+  align-items: center;  
+  margin-top: -15px;
+  margin-bottom: -15px;
+  margin-left: -15px;
 }
 
 .social-icons a.custom-icon:hover img {
