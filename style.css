@@ -19,10 +19,16 @@ nav a {
   color: #00aaff; /* Cyber blue */
   text-decoration: none;
   font-weight: bold;
+  margin-right: 15px; /* Adds space to the right of each link */
+  text-decoration: none; /* Removes underline from links */
 }
 
 nav a:hover {
   color: #0088cc; /* Slightly darker blue */
+}
+
+nav a:last-child {
+  margin-right: 0; /* Removes the margin from the last link */
 }
 
 /* Cards */
