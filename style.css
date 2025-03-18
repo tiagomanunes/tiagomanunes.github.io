@@ -1,7 +1,7 @@
 /* General Styles */
 body {
   font-family: 'Fira Code', monospace;
-  background-color: #121826; /* Deep navy */
+  background-color: #262626; /* Charcoal */
   color: #c3d1e3; /* Soft off-white */
   max-width: 800px;
   margin: 20px auto;
@@ -34,9 +34,13 @@ nav a:hover {
   box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.2);
 }
 
-/* Headings */
-h1, h2 {
-  color: #00aaff;
+/* Apply Orbitron to Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00aaff; /* Keep the cool blue */
+  font-weight: 700; /* Bold */
+  text-transform: uppercase; /* Optional: Cyberpunk vibes */
+  letter-spacing: 1px; /* Slight spacing for readability */
 }
 
 /* Write-ups List */
