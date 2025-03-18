@@ -3,8 +3,8 @@ layout: default
 title: Home
 ---
 
-# Your Name
-Short bio about yourself. Passionate about this, that, and breaking things.
+# Tiago Nunes
+Short bio. Passionate about this, that, and breaking things.
 
 <div class="card">
   <h2>Hack The Box Stats</h2>

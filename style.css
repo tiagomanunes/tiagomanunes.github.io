@@ -1,17 +1,64 @@
+/* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Fira Code', monospace;
+  background-color: #121826; /* Deep navy */
+  color: #c3d1e3; /* Soft off-white */
   max-width: 800px;
   margin: 20px auto;
+  padding: 20px;
 }
+
+/* Navigation */
 nav {
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
 }
+
+nav a {
+  color: #00aaff; /* Cyber blue */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #0088cc; /* Slightly darker blue */
+}
+
+/* Cards */
 .card {
-  border: 1px solid #ddd;
+  background: #1b2436; /* Dark but not black */
+  border: 1px solid #00aaff;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.2);
+}
+
+/* Headings */
+h1, h2 {
+  color: #00aaff;
+}
+
+/* Write-ups List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li a {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: #0088cc;
+}
+
+/* Code Blocks (if you have any) */
+code {
+  background: #0d1622;
+  color: #00aaff;
+  padding: 4px 6px;
+  border-radius: 5px;
 }
 
