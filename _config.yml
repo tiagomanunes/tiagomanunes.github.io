@@ -1,0 +1,17 @@
+title: "Tiago Nunes"
+description: "Tracking my InfoSec journey."
+baseurl: "" # Set this if your site is inside a subfolder
+url: "https://tiagomanunes.github.io"
+
+collections:
+  writeups:
+    output: true
+    permalink: /writeups/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: writeups
+    values:
+      layout: "post"
+
