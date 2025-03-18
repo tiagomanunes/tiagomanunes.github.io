@@ -44,10 +44,11 @@ jobs:
         run: python src/fetch_htb_data.py
 
       - name: Save API data as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: htb-data
           path: htb_data.json
+          overwrite: true
 
   # Build job
   build:
@@ -56,7 +57,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Download API data artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: htb-data
       - name: Move htb_data.json to Jekyll’s _data folder
