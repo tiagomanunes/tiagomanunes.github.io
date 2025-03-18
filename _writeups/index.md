@@ -8,7 +8,7 @@ permalink: /writeups/
 
 <ul>
   {% for writeup in site.writeups %}
-    {% if writeup.name != "index.html" %}
+    {% if writeup.url != "/writeups/" %}
       <li><a href="{{ writeup.url }}">{{ writeup.title }}</a></li>
     {% endif %}
   {% endfor %}
