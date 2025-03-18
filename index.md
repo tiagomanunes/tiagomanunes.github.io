@@ -16,5 +16,6 @@ Short bio. Passionate about this, that, and breaking things.
     <li>💀 <strong>Owned Machines:</strong> {{ site.data.htb.owned_user }} user / {{ site.data.htb.owned_root }} root</li>
     <li>🔬 <strong>Current ProLab:</strong> {{ site.data.htb.prolab }} ({{ site.data.htb.prolab_progress }}% complete)</li>
   </ul>
+  <div class="last-updated">Last updated: {{ site.data.htb.last_updated }}</div>
 </div>
 

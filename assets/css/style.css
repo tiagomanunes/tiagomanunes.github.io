@@ -72,3 +72,26 @@ code {
   border-radius: 5px;
 }
 
+.last-updated {
+  font-size: 0.8em;
+  font-style: italic;
+  color: #a0b3cc; /* Soft blue-gray */
+  text-align: right;
+  margin-top: 10px;
+}
+
+.social-icons {
+  margin-left: auto; /* Pushes icons to the right */
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons a {
+  color: #00aaff; /* Same cyber blue */
+  font-size: 1.5em;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  color: #0088cc; /* Slightly darker blue on hover */
+}
