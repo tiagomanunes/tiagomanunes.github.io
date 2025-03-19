@@ -21,7 +21,7 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 {% assign latest_writeup = site.writeups | where: 'layout', 'post' | sort: 'date' | reverse | first %}
 
 ### {{ latest_writeup.title }}
-{{ latest_writeup.content | slice: 0, 200 | remove '#' }}...
+{{ latest_writeup.content | slice: 0, 200 | remove: '#' }}...
 
 [Read more]({{ latest_writeup.url }})
 
