@@ -6,6 +6,8 @@ permalink: /writeups/
 
 # Honest Write-ups
 
+Write an intro.
+
 <ul>
   {% for writeup in site.writeups %}
     {% if writeup.url != "/writeups/" %}
