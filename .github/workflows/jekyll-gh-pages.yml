@@ -51,11 +51,11 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install aiohttp
 
       - name: Fetch HTB API Data
         run: |
-          python fetch_htb_data.py || mv old_htb_data.json htb_data.json
+          python src/fetch_htb_data.py || mv old_htb_data.json htb_data.json
 
       - name: Save API data as artifact
         uses: actions/upload-artifact@v4
