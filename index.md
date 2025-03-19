@@ -4,7 +4,9 @@ title: Home
 ---
 
 # Tiago Nunes
-Short bio. Passionate about this, that, and breaking things.
+Software Engineer for 15 years, interested in offensive security since before then, finally turning that interest into a profession.
+
+I hope you enjoy my [Honest Write-ups](/writeups), and any other posts I'll (probably) make from time to time :)
 
 <div class="card">
   <h2>Hack The Box Stats</h2>
