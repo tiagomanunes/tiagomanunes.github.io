@@ -18,6 +18,7 @@ nav a {
   text-decoration: none;
   font-weight: bold;
   margin-right: 15px;
+  transition: color 0.3s ease-in-out;
 }
 
 nav a:hover {
@@ -33,7 +34,7 @@ nav a:last-child {
   border: 1px solid #00aaff;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.2);
+  box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.3);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,6 +48,11 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: #00aaff;
   text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #0088cc; /* Slightly darker blue */
 }
 
 ul {
@@ -112,4 +118,12 @@ code {
 
 .social-icons a.custom-icon:hover img {
   filter: invert(79%) sepia(100%) saturate(240%) hue-rotate(50deg) brightness(115%) contrast(105%); /* Simulate HTB's electric-green */
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: #00aaff;
+  margin: 40px 0;
+  box-shadow: 0 0 10px #00aaff;
 }
