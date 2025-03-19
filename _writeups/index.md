@@ -18,7 +18,7 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 
 ## Latest
 
-{% assign latest_writeup = site.writeups | sort: 'date' | reverse | first %}
+{% assign latest_writeup = site.writeups | where: 'date' | sort: 'date' | reverse | first %}
 
 ### {{ latest_writeup.title }}
 {{ latest_writeup.content | slice: 0, 200 }}...
