@@ -54,6 +54,8 @@ jobs:
         run: pip install aiohttp
 
       - name: Fetch HTB API Data
+        env:
+          HTB_API_KEY: ${{ secrets.HTB_API_KEY }}
         run: |
           python src/fetch_htb_data.py || mv old_htb_data.json htb_data.json
 
