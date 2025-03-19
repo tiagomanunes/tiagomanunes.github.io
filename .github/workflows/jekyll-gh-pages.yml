@@ -32,19 +32,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Restore previous htb_data.json
-        uses: actions/download-artifact@v4
-        with:
-          name: htb-data
-        continue-on-error: true
-
-      - name: Move restored file (if exists)
-        run: |
-          if [ -f htb_data.json ]; then
-            echo "Using previous htb_data.json as fallback."
-            mv htb_data.json old_htb_data.json
-          fi
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -55,9 +42,8 @@ jobs:
 
       - name: Fetch HTB API Data
         env:
-          HTB_API_KEY: ${{ secrets.HTB_API_KEY }}
-        run: |
-          python src/fetch_htb_data.py || mv old_htb_data.json htb_data.json
+          HTB_API_TOKEN: ${{ secrets.HTB_API_KEY }}
+        run: python src/fetch_htb_data.py
 
       - name: Save API data as artifact
         uses: actions/upload-artifact@v4
@@ -69,6 +55,7 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    needs: fetch-api-data
     steps:
       - name: Checkout
         uses: actions/checkout@v4
