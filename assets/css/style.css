@@ -100,24 +100,8 @@ code {
   color: #0088cc; /* Slightly darker blue on hover */
 }
 
-.social-icons img {
-  width: 55px;
-  height: 55px;
-  vertical-align: middle;
-  transition: filter 0.3s ease-in-out;
-}
-
-.social-icons a.custom-icon {
-  display: inline-flex;  
-  align-items: center;  
-  margin-top: -15px;
-  margin-right: -15px;
-  margin-bottom: -15px;
-  margin-left: -15px;
-}
-
-.social-icons a.custom-icon:hover img {
-  filter: invert(79%) sepia(100%) saturate(240%) hue-rotate(50deg) brightness(115%) contrast(105%); /* Simulate HTB's electric-green */
+.htb:hover {
+  color: #9fef00;
 }
 
 hr {
