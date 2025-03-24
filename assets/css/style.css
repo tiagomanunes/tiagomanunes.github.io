@@ -100,7 +100,7 @@ code {
   color: #0088cc; /* Slightly darker blue on hover */
 }
 
-.htb:hover {
+.social-icons a.htb:hover {
   color: #9fef00;
 }
 
