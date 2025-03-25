@@ -16,12 +16,11 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 
 ---
 
-## Latest
-
 {% assign latest_writeup = site.writeups | where: 'layout', 'post' | sort: 'date' | reverse | first %}
 
-### {{ latest_writeup.title }}
-{{ latest_writeup.content | remove: '#' | truncate: 200 }}
+## Latest: {{ latest_writeup.title }}
+
+{{ latest_writeup.content | replace: "##", "###" | truncate: 200 }}
 
 [Read more]({{ latest_writeup.url }})
 
@@ -32,7 +31,7 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 <ul>
   {% for writeup in site.writeups %}
     {% if writeup.url != "/writeups/" %}
-      <li><a href="{{ writeup.url }}">{{ writeup.date }} - {{ writeup.title }}</a></li>
+      <li><a href="{{ writeup.url }}">{{ writeup.date | date: "%Y-%m-%d" }} - {{ writeup.title }}</a></li>
     {% endif %}
   {% endfor %}
 </ul>
