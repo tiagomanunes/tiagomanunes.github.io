@@ -16,7 +16,8 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 
 ---
 
-{% assign latest_writeup = site.writeups | sort: 'date' | reverse | first %}
+{% assign writeups = site.writeups | reverse %}
+{% assign latest_writeup = writeups | first %}
 
 ## Latest: {{ latest_writeup.title }}
 
@@ -26,10 +27,10 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 
 ---
 
-## All the write-ups
+## All the honesty
 
 <ul>
-  {% for writeup in site.writeups | sort: 'date' | reverse %}
+  {% for writeup in writeups %}
     <li><a href="{{ writeup.url }}">{{ writeup.date | date: "%Y-%m-%d" }} - {{ writeup.title }}</a></li>
   {% endfor %}
 </ul>
