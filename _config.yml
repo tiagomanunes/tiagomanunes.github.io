@@ -7,7 +7,7 @@ collections:
   writeups:
     output: true
     permalink: /writeups/:title/
-    index: true
+    sort_by: date
 
 defaults:
   - scope:

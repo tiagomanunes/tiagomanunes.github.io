@@ -111,3 +111,44 @@ hr {
   margin: 40px 0;
   box-shadow: 0 0 10px #00aaff;
 }
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.post-nav a {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: #00aaff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.post-nav a:hover {
+  background-color: #0088cc;
+}
+
+.prev {
+  text-align: left;
+}
+
+.next {
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .post-nav {
+      flex-direction: column;
+  }
+
+  .prev, .next {
+      text-align: center;
+  }
+}
