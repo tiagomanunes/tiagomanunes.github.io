@@ -1,7 +1,7 @@
 :root {
+  --background-color: #262626; /* Charcoal */
   --primary-color: #00aaff;    /* Cyber blue */
   --hover-color: #66ddff;      /* Slightly brighter blue */
-  --background-color: #262626; /* Charcoal */
   --text-color: #c3d1e3;       /* Soft off-white */
   --htb-color: #9fef00;        /* HTB green */
 }

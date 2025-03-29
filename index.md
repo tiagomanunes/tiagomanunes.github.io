@@ -18,6 +18,6 @@ I hope you enjoy my [Honest Write-ups](/writeups), and any other posts I'll (pro
     <li># <strong>Owned Machines:</strong> {{ site.data.htb_data.owns_user }} user / {{ site.data.htb_data.owns_root }} root</li>
     <!--<li># <strong>Current ProLab:</strong> {{ site.data.htb_data.current_prolab }} ({{ site.data.htb_data.prolab_owned_flags }}/{{ site.data.htb_data.prolab_total_flags }} flags)</li>-->
   </ul>
-  <div class="last-updated">Last updated through HTB API: {{ site.data.htb_data.last_updated }}</div>
+  <div class="last-updated">Last auto-updated through HTB API: {{ site.data.htb_data.last_updated }}</div>
 </div>
 
