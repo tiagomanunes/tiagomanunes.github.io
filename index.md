@@ -11,7 +11,7 @@ I hope you enjoy my [Honest Write-ups](/writeups), and any other posts I'll (pro
 <div class="card">
   <h2>Hack The Box Stats</h2>
   <ul>
-    <!--<li># <strong>Rank:</strong> {{ site.data.htb_data.rank_label }}</li>-->
+    <li># <strong>Rank:</strong> {{ site.data.htb_data.rank_label }}</li>
     <li># <strong>World Rank:</strong> {{ site.data.htb_data.rank_global }}</li>
     <!--<li># <strong>Personal Best:</strong> {{ site.data.htb_data.best_rank }} ({{ site.data.htb_data.best_date }})</li>-->
     <li># <strong>Country Rank (CH):</strong> {{ site.data.htb_data.rank_country }}</li>
