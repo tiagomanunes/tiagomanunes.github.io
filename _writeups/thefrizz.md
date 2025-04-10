@@ -2,6 +2,7 @@
 layout: post
 title: "TheFrizz"
 date: 2025-03-23
+categories: [htb, medium]
 ---
 
 ## To be revealed

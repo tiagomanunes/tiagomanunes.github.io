@@ -2,6 +2,7 @@
 layout: post
 title: "Dog"
 date: 2025-04-09
+categories: [htb, easy]
 ---
 
 ## To be revealed

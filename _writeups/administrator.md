@@ -2,6 +2,7 @@
 layout: post
 title: "Administrator"
 date: 2025-04-09
+categories: [htb, medium]
 ---
 
 ## To be revealed

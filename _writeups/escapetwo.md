@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "LinkVortex"
-date: 2025-04-08
+title: "EscapeTwo"
+date: 2025-04-10
 categories: [htb, easy]
 ---
 
 ## To be revealed
-How can you use a tool for years, and not know...
+The Administrator box and this one should swap difficulty rankings...
 
 ... but this machine is still active, come back later!
