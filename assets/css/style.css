@@ -25,6 +25,10 @@ body em {
   text-shadow: 0px 0px 6px var(--hover-color);
 }
 
+body strong {
+  font-weight: 500;
+}
+
 a {
   color: var(--primary-color);
   text-decoration: none;
@@ -106,18 +110,11 @@ ul li::before {
 
 .card ul {
   list-style: none;
-  padding: 0;
+  padding: 15;
 }
 
 .card ul li {
-  margin-bottom: 3px;
-}
-
-code.highlighter-rouge {
-  background: #1b2436;
-  color: var(--primary-color);
-  padding: 4px 4px;
-  border-radius: 5px;
+  margin-bottom: 2px;
 }
 
 .last-updated {
@@ -125,7 +122,13 @@ code.highlighter-rouge {
   font-style: italic;
   color: #a0b3cc; /* Soft blue-gray */
   text-align: right;
-  margin-top: 10px;
+}
+
+code.highlighter-rouge {
+  background: #1b2436;
+  color: var(--primary-color);
+  padding: 4px 4px;
+  border-radius: 5px;
 }
 
 .social-icons {
