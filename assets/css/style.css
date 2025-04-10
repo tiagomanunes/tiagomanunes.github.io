@@ -1,5 +1,6 @@
 :root {
-  --background-color: #262626; /* Charcoal */
+  --background-color: #1e1e1e; /* Charcoal */
+  --card-background: #1b2436;  /* Dark slate blue */
   --primary-color: #00aaff;    /* Cyber blue */
   --hover-color: #66ddff;      /* Slightly brighter blue */
   --text-color: #c3d1e3;       /* Soft off-white */
@@ -7,12 +8,21 @@
 }
 
 body {
-  font-family: 'Fira Code', monospace;
   background-color: var(--background-color);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 200;
+  text-align: justify;
+  text-justify: auto;
+  line-height: 1.4;
   color: var(--text-color);
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
+}
+
+body em {
+  font-style: italic;
+  text-shadow: 0px 0px 6px var(--hover-color);
 }
 
 a {
@@ -49,28 +59,65 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px;
 }
 
+pre {
+  background: var(--card-background);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.3);
+  font-family: 'Fira Code', 'Courier New', monospace;
+  text-align: start;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  line-height: 1.2;
+  color: var(--primary-color);
+  margin: 1.5em 0;
+  transition: color 0.3s ease-in-out;
+}
+
+pre:hover {
+  color: var(--hover-color);
+  border: 1px solid var(--hover-color);
+  text-shadow: 0px 0px 8px var(--primary-color);
+}
+
 ul {
   list-style: none;
-  padding: 0;
+  padding-left: 1.2em;
 }
 
-ul li {
-  margin-bottom: 3px;
-}
-
-code {
-  background: #0d1622;
+ul li::before {
+  content: "→";
   color: var(--primary-color);
-  padding: 4px 6px;
-  border-radius: 5px;
+  text-shadow: 0px 0px 8px var(--primary-color);
+  display: inline-block;
+  width: 1em;
+  margin-left: -1.2em;
 }
 
 .card {
-  background: #1b2436; /* Dark but not black */
+  background: var(--card-background);
   border: 1px solid var(--primary-color);
   padding: 15px;
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.3);
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  margin-bottom: 3px;
+}
+
+code.highlighter-rouge {
+  background: #1b2436;
+  color: var(--primary-color);
+  padding: 4px 4px;
+  border-radius: 5px;
 }
 
 .last-updated {

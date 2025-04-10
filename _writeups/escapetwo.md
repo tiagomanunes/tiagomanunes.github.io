@@ -6,6 +6,6 @@ categories: [htb, easy]
 ---
 
 ## To be revealed
-The Administrator box and this one should swap difficulty rankings...
+The Administrator box and this one should swap difficulty ratings...
 
 ... but this machine is still active, come back later!
