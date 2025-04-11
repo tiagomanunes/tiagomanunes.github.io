@@ -65,11 +65,17 @@ a:active {
   color: var(--primary-color);
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 .hamburger:hover {
   color: var(--hover-color);
   text-shadow: 0px 0px 6px var(--hover-color);
+}
+
+.hamburger:active {
+  text-shadow: 0px 0px 12px var(--hover-color);
 }
 
 .nav-links {
@@ -125,27 +131,53 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 0px 0px 6px var(--htb-color);
 }
 
-pre {
+.terminal-block {
   background: var(--card-background);
   border: 1px solid var(--primary-color);
-  border-radius: 8px;
+  border-radius: 5px;
   padding: 15px;
   box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.3);
-  font-family: 'Fira Code', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  font-weight: 300;
   text-align: start;
   white-space: pre-wrap;
   word-break: break-word;
   overflow-x: auto;
-  line-height: 1.2;
+  line-height: 1.4;
   color: var(--primary-color);
-  margin: 1.5em 0;
   transition: color 0.3s ease-in-out;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-pre:hover {
+.terminal-block div {
+  margin-top: -0.4em;
+  margin-bottom: -0.4em;
+}
+
+.terminal-block:hover {
   color: var(--hover-color);
   border: 1px solid var(--hover-color);
   text-shadow: 0px 0px 8px var(--primary-color);
+}
+
+.cmd-line {
+  font-weight: 500;
+  color: var(--hover-color);
+  transition: color 0.3s ease-in-out;
+}
+
+.terminal-block:hover .cmd-line,
+.terminal-block:hover .prompt {
+  font-weight: normal;
+  color: var(--text-color);
+  text-shadow: 0px 0px 10px var(--text-color);
+}
+
+.prompt {
+  color: var(--hover-color);
+  margin-right: 0.2em;
 }
 
 ul {
@@ -250,7 +282,7 @@ hr {
 
   .social-icons {
     padding-top: 5px;
-    gap: 20px;
+    gap: 25px;
   }
 
   .post-meta {

@@ -2,7 +2,7 @@
 layout: post
 title: "Titanic"
 date: 2025-03-28
-categories: [htb, easy]
+categories: [htb, easy, placeholder]
 provider: htb
 machine: titanic
 ---

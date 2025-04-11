@@ -2,7 +2,7 @@
 layout: post
 title: "Dog"
 date: 2025-04-09
-categories: [htb, easy]
+categories: [htb, easy, placeholder]
 provider: htb
 machine: dog
 ---

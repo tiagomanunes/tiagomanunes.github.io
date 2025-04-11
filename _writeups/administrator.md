@@ -2,7 +2,7 @@
 layout: post
 title: "Administrator"
 date: 2025-04-09
-categories: [htb, medium]
+categories: [htb, medium, placeholder]
 provider: htb
 machine: administrator
 ---

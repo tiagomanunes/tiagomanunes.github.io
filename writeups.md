@@ -31,6 +31,6 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 
 <ul>
   {% for writeup in writeups %}
-    <li><a href="{{ writeup.url }}">{{ writeup.date | date: "%Y-%m-%d" }} - {{ writeup.title }}</a></li>
+    <li><a href="{{ writeup.url }}">{% if writeup.categories contains 'placeholder' %}active box{% else %}{{ writeup.date | date: "%Y-%m-%d" }}{% endif %} - {{ writeup.title }}</a></li>
   {% endfor %}
 </ul>

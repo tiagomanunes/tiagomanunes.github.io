@@ -2,7 +2,7 @@
 layout: post
 title: "TheFrizz"
 date: 2025-03-23
-categories: [htb, medium]
+categories: [htb, medium, placeholder]
 provider: htb
 machine: thefrizz
 ---

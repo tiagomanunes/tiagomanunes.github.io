@@ -2,7 +2,7 @@
 layout: post
 title: "LinkVortex"
 date: 2025-04-08
-categories: [htb, easy]
+categories: [htb, easy, placeholder]
 provider: htb
 machine: linkvortex
 ---

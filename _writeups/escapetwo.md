@@ -2,7 +2,7 @@
 layout: post
 title: "EscapeTwo"
 date: 2025-04-10
-categories: [htb, easy]
+categories: [htb, easy, placeholder]
 provider: htb
 machine: escapetwo
 ---

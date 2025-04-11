@@ -2,7 +2,7 @@
 layout: post
 title: "Code"
 date: 2025-03-25
-categories: [htb, easy]
+categories: [htb, easy, placeholder]
 provider: htb
 machine: code
 ---
