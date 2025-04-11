@@ -40,19 +40,58 @@ a:hover {
   text-shadow: 0px 0px 2px var(--primary-color);
 }
 
-nav {
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 0 5px 0;
+  position: relative;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2.3em;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.hamburger:hover {
+  color: var(--hover-color);
+  text-shadow: 0px 0px 6px var(--hover-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.social-icons {
   display: flex;
   gap: 15px;
-  margin-bottom: 20px;
+  margin-left: auto;
 }
 
-nav a {
+.nav-links a { 
   font-weight: bold;
-  margin-right: 15px;
 }
 
-nav a:last-child {
-  margin-right: 0;
+.social-icons a {
+  font-size: 1.5em;
+}
+
+.social-icons a:hover {
+  text-shadow: 0px 0px 6px var(--hover-color);
+}
+
+.social-icons a.htb:hover {
+  color: var(--htb-color);
+  text-shadow: 0px 0px 6px var(--htb-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -92,7 +131,7 @@ ul {
 }
 
 ul li::before {
-  content: "→";
+  content: "#";
   color: var(--primary-color);
   text-shadow: 0px 0px 8px var(--primary-color);
   display: inline-block;
@@ -106,6 +145,7 @@ ul li::before {
   padding: 15px;
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.3);
+  margin-top: 2em;
 }
 
 .card ul {
@@ -125,32 +165,10 @@ ul li::before {
 }
 
 code.highlighter-rouge {
-  background: #1b2436;
+  background: var(--card-background);
   color: var(--primary-color);
   padding: 4px 4px;
   border-radius: 5px;
-}
-
-.social-icons {
-  margin-left: auto;
-  display: flex;
-  gap: 10px;
-}
-
-.social-icons a {
-  color: var(--primary-color);
-  font-size: 1.5em;
-  transition: color 0.3s ease-in-out;
-}
-
-.social-icons a:hover {
-  color: var(--hover-color);
-  text-shadow: 0px 0px 6px var(--hover-color);
-}
-
-.social-icons a.htb:hover {
-  color: var(--htb-color);
-  text-shadow: 0px 0px 6px var(--htb-color);
 }
 
 hr {
@@ -182,6 +200,36 @@ hr {
 }
 
 @media (max-width: 600px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    gap: 20px;
+    top: 100%;
+    left: 0;
+    width: 50%;
+    background-color: #1f1f1f;
+    z-index: 999;
+    padding: 20px 30px;
+    border: 1px solid rgba(0, 170, 255, 0.6);
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 10px rgba(0, 170, 255, 0.3);
+  }
+
+  .menu-toggle:checked ~ .nav-links {
+    display: flex;
+  }
+
+  .social-icons {
+    padding-top: 5px;
+    gap: 10px;
+  }
+
   .post-nav {
       flex-direction: column;
   }

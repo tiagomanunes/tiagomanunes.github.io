@@ -1,16 +1,15 @@
-<nav>
-  <a href="{{ "/" | relative_url }}">Home</a>
-  <a href="{{ "/writeups/" | relative_url }}">Honest Write-ups</a>
+<nav class="navbar">
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+  <div class="nav-links">
+    <a href="{{ "/" | relative_url }}">Home</a>
+    <a href="{{ "/writeups/" | relative_url }}">Honest Write-ups</a>
+  </div>
+
   <div class="social-icons">
-    <a href="https://github.com/tiagomanunes" target="_blank">
-      <i class="fab fa-github"></i>
-    </a>
-    <a href="https://linkedin.com/in/tiagonunes" target="_blank">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://app.hackthebox.com/profile/2103519" target="_blank" class="htb">
-      <i class="fas fa-cube"></i>
-    </a>
+    <a href="https://github.com/tiagomanunes" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/tiagonunes" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://app.hackthebox.com/profile/2103519" target="_blank" class="htb"><i class="fas fa-cube"></i></a>
   </div>
 </nav>
-
