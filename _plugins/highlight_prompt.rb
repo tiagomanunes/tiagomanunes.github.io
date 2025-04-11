@@ -1,6 +1,7 @@
 require 'cgi'
 
 Jekyll::Hooks.register [:documents], :pre_render do |doc|
+  puts "Prompt highlight plugin loaded!"
   doc.content.gsub!(/```\n(.*?)```/m) do |_match|
     block = $1
     lines = block.lines.map(&:chomp)
