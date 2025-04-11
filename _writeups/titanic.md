@@ -3,6 +3,8 @@ layout: post
 title: "Titanic"
 date: 2025-03-28
 categories: [htb, easy]
+provider: htb
+machine: titanic
 ---
 
 ## To be revealed

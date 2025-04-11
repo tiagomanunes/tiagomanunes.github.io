@@ -3,7 +3,18 @@ layout: default
 ---
 
 <h1>{{ page.title }}</h1>
-<p><em>Published on {{ page.date | date: "%B %d, %Y" }}</em></p>
+
+<div class="post-meta">
+  <em>Published on {{ page.date | date: "%B %d, %Y" }}</em>
+
+  {% if page.provider == "htb" and page.machine %}
+    <span class="machine-link {{ page.provider }}">
+      <a href="https://hackthebox.com/machines/{{ page.machine | uri_escape }}" target="_blank">
+        Give it a go on HTB
+      </a>
+    </span>
+  {% endif %}
+</div>
 
 <article>
   {{ content }}

@@ -3,6 +3,8 @@ layout: post
 title: "EscapeTwo"
 date: 2025-04-10
 categories: [htb, easy]
+provider: htb
+machine: escapetwo
 ---
 
 ## To be revealed
