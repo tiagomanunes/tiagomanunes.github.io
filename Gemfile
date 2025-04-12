@@ -12,3 +12,5 @@ gem "github-pages", "= 232"
 # even though it is included in the original GitHub Pages build infrastructure.
 gem "jekyll-include-cache", "= 0.2.1"
 gem "jekyll-octicons", "~> 14.2"
+
+# Stolen from https://github.com/actions/jekyll-build-pages/blob/v1/Gemfile

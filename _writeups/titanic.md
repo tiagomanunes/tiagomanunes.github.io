@@ -11,8 +11,3 @@ machine: titanic
 I come across my CVE research nemesis again...
 
 ... but this machine is still active, come back later!
-
-```
-$ echo "sneak peek of things to come"
-sneak peek of things to come
-```
