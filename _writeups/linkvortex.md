@@ -9,7 +9,7 @@ machine: linkvortex
 
 Welcome! We are finally here: this is the first of my Honest Write-ups to be blinded by the light of day. I rooted my first few Hack The Box machines back in October/November last year, when I started [the CPTS path](https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist), but then focused on studying. It was actually during the exam that the idea for these came to mind. An honest report would be _very_ different. "The tester made a stupid typo and assumed the target machine was down", or "at this point, the tester was stuck for days". Now that CPTS is out of the way, I'm back to solving these machines, and will write honestly about them.
 
-LinkVortex, and another easy-rated machine that I won't name yet (still active), made me worry. I stumbled my way to root on a few easy boxes at the start of my CPTS path. I rooted a few more after CPTS, graduating to medium machines and feeling almost at ease. Then I tried that other easy one, and I got _nothing_. Staring at a web application's login page, all the enumeration steps I knew of done, all the very few options exhausted. Stunned, I set it aside and moved on to LinkVortex, one week before its retirement.
+LinkVortex, and another easy-rated machine that I won't name yet (still active), made me worry. I had stumbled my way to root on a few easy boxes at the start of my CPTS path. I rooted a few more after CPTS, graduating to medium machines and feeling almost at ease. Then I tried that other easy one, and I got _nothing_. Staring at a web application's login page, all the enumeration steps I knew of done, all the very few options exhausted. Stunned, I set it aside and moved on to LinkVortex, one week before its retirement.
 
 ## Up-beat retro synthwave music on
 It always starts the same way - a quick `nmap` shows SSH & HTTP only, and the full TCP scan confirms it later on:
@@ -216,7 +216,7 @@ Content:
 
 I thought this was it, root is probably reusing that password. But throwing those credentials over SSH did not work. I spent some time trying to figure out if having access to that database could be the way, but it looked more and more like a rabbit-hole.
 
-I eventually wondered if the script would work properly if I created a link-to-a-link. In other words, a `.png` file linking to a `.txt` file, which in turn linked to a target file we do not have access to, like `/etc/shadow`. Examinig the script, it looked like this could work, but the first attempt was unsuccessful:
+I eventually wondered if the script would work properly if I created a link-to-a-link. In other words, a `.png` file linking to a `.txt` file, which in turn linked to a target file we do not have access to, like `/etc/shadow`. Examining the script, it looked like this could work, but the first attempt was unsuccessful:
 ```
 $ export CHECK_CONTENT=true
 $ ln -s /etc/shadow dude.txt
