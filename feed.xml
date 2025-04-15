@@ -1,0 +1,30 @@
+---
+layout: null
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Honest Write-ups</title>
+    <link>{{ "/writeups/" | absolute_url }}</link>
+    <description>Reading a write-up of a box can make us feel like we are miles behind. Not here. I'll give it to you straight.</description>
+    <language>en-us</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+
+    {% for post in site.writeups %}
+      {% if post.categories contains 'placeholder' %}
+        {% continue %}
+      {% endif %}
+      <item>
+        <title>{{ post.title | xml_escape }}</title>
+        <link>{{ post.url | absolute_url }}</link>
+        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
+        <description>{{ post.excerpt | xml_escape }}</description>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <media:content url="{{ "/assets/images/writeup_og_image.png" | absolute_url }}" type="image/png">
+          <media:title>{{ post.title | xml_escape }}</media:title>
+        </media:content>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

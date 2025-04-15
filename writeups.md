@@ -26,11 +26,14 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 [Read more]({{ latest_writeup.url }})
 
 ---
-
-## All the honesty
-
-<ul>
-  {% for writeup in writeups %}
-    <li><a href="{{ writeup.url }}">{% if writeup.categories contains 'placeholder' %}active box{% else %}{{ writeup.date | date: "%Y-%m-%d" }}{% endif %} - {{ writeup.title }}</a></li>
-  {% endfor %}
-</ul>
+<div class="feed">
+  <h2>All the honesty</h2>
+  <div class="rss-icon">
+    <a href="{{ "/feed.xml" | relative_url }}"><i class="fas fa-rss"></i></a>
+  </div>
+  <ul>
+    {% for writeup in writeups %}
+      <li><a href="{{ writeup.url }}">{% if writeup.categories contains 'placeholder' %}active box{% else %}{{ writeup.date | date: "%Y-%m-%d" }}{% endif %} - {{ writeup.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
