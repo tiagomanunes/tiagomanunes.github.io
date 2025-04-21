@@ -9,7 +9,7 @@ Jekyll::Hooks.register [:documents], :pre_render do |doc|
     output_buffer = []
 
     lines.each do |line|
-      if line.strip.start_with?('$')
+      if line.strip.start_with?('$ ')
         # Flush the output buffer first
         unless output_buffer.empty?
           result << "<div>#{CGI.escapeHTML(output_buffer.join("\n"))}</div>"
