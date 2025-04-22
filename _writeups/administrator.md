@@ -15,7 +15,7 @@ You see, _I'm a Linux kind of guy._ I'm a software engineer by training, and fro
 
 Now here I am, wanting to turn my career fully into offensive security, and having to accept that web applications and Active Directory will be a large chunk of my reality, at least for a while. Getting out of your comfort zone is never easy, and I did look at Active Directory in fear. Words are important to me, and I do think "fear" is ultimately the right word in these situations - we are afraid of getting hurt in some way by stepping out.
 
-The thing is, like [one of my favourite drummers](https://www.youtube.com/watch?v=2DdrwLk3pW8) once said, _"you become **really** old when you stop being willing to feel stupid for a bit"._ I didn't even know how to tell the difference between a local user and a domain user. Hey, I'm no AD master now either, as a few upcoming write-ups will show. But at least I got to breeze through a box like this one. That's something. So this write-up is my way of telling you, if you find yourself doubting it, that it's _definitely_ worth it to feel stupid for a bit.
+The thing is, like [one of my favourite drummers](https://www.youtube.com/watch?v=2DdrwLk3pW8) once said, _"you become **really** old when you stop being willing to feel stupid for a bit"._ And boy did I feel stupid. I remember at some point asking what the difference was between a local user and a domain user. Hey, I'm no AD master now either, as a few upcoming write-ups will show. But at least I got to breeze through a box like this one. That's something. So this write-up is my way of telling you, if you find yourself doubting it, that it's _definitely_ worth it to feel stupid for a bit.
 
 Well, if you're still here, let's get back to the box. The exploitation chain is a series of ACL abuses, so BloodHound did all the work really. This made the Mission: Impossible theme feel a bit out of place, but still, lets go through it with the right soundtrack.
 
@@ -63,7 +63,7 @@ INFO: Compressing output into 20250409111956_bloodhound.zip
 
 After loading the data on the BloodHound UI, and checking Olivia's outbound object control, we see that she has `GenericAll` rights over another user, Michael. Checking transitive object control, we see that Michael has rights to `ForceChangePassword` on Benjamin, who in turn is a member of the `Share Moderators` group. Maybe _he_ will be able to connect to FTP, so this seems to be our path forward. Good dog.
 
-Before we move on, we look to get a bit more awareness on each of these users. Olivia and Michael are members of the `Remote Management Users` group, so we should be able to connect with WinRM and gather more info if needed. Finally, checking for the shortest paths to Domain Admin, we see that Ethan (_Hunt_) has `DCSync` rights over the domain. Our mission, should we choose to accept it, is probably to get our hands on his account.
+Before we move on, we look to get a bit more awareness on each of these users. Olivia and Michael are members of the `Remote Management Users` group, so we should be able to connect with WinRM and gather more info if needed. Finally, checking for the shortest paths to Domain Admin, we see that Ethan (_Hunt!_) has `DCSync` rights over the domain. Our mission, should we choose to accept it, is probably to get our hands on his account.
 
 How do we do this? Honestly, even if you knew very little about AD, you could just ask the dog. Right-clicking edges on BloodHound gives you more information, including how to carry out the relevant attacks if applicable. With `GenericAll` we have several options, but since I play these machines in shared instances I went for a targeted Kerberoast, adding a temporary SPN and requesting a TGS ticket, and hoping for the password to be crackable. This is all very easy to do with, well, [targetedKerberoast](https://github.com/ShutdownRepo/targetedKerberoast). We just have to deal with any clock skew between our machine and the target, using `faketime` for example, and we're good to go:
 ```
@@ -119,7 +119,7 @@ ftp> get Backup.psafe3
 local: Backup.psafe3 remote: Backup.psafe3
 229 Entering Extended Passive Mode (|||63156|)
 125 Data connection already open; Transfer starting.
-100% |**********************************************************************************************|   952       43.15 KiB/s    00:00 ETA
+100% |**************************************|   952       43.15 KiB/s    00:00 ETA
 226 Transfer complete.
 WARNING! 3 bare linefeeds received in ASCII mode.
 File may not have transferred correctly.
@@ -130,7 +130,7 @@ ftp> get Backup.psafe3
 local: Backup.psafe3 remote: Backup.psafe3
 229 Entering Extended Passive Mode (|||63157|)
 125 Data connection already open; Transfer starting.
-100% |**********************************************************************************************|   952       41.59 KiB/s    00:00 ETA
+100% |**************************************|   952       41.59 KiB/s    00:00 ETA
 226 Transfer complete.
 952 bytes received in 00:00 (41.09 KiB/s)
 ```
@@ -143,7 +143,7 @@ $ hashcat Backup.psafe3 rockyou.txt -m 5200
 Backup.psafe3:<REDACTED>
 ```
 
-Opening this database with Password Safe shows us the credentials for Alexander, Emma and Emily. Checking BloodHound, Emily has `GenericWrite` rights over Ethan (_Hunt!_), so we focus on her. She also happens to be a member of `Remote Management Users`, so we quickly check her desktop to find our user flag:
+Opening this database with Password Safe shows us the credentials for Alexander, Emma and Emily. Checking BloodHound, Emily has `GenericWrite` rights over Ethan, so we focus on her. She also happens to be a member of `Remote Management Users`, so we quickly check her desktop to find our user flag:
 ```
 $ evil-winrm -i 10.10.11.42 -u Emily -p '<REDACTED>'
 
@@ -178,7 +178,7 @@ $ hashcat ethan.hash rockyou.txt
 $krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator.htb/ethan*$3<SNIP>c$a<REDACTED>b:<REDACTED>
 ```
 
-I had seen at the start that Ethan (_Hunt!!!_) had `DCSync` rights, but I wondered if that was the work of another player and if I was about to cheese the box. I asked for a reset before running the following, and it still ran, so... it's up there with the easiest root flags ever. We use the Impacket toolkit to dump the Administrator's NTLM hash, and pass that hash to log in with `evil-winrm`:
+I had seen at the start that Ethan had `DCSync` rights, but I wondered if that was the work of another player and if I was about to cheese the box. I asked for a reset before running the following, and it still ran, so... it's up there with the easiest root flags ever. We use the Impacket toolkit to dump the Administrator's NTLM hash, and pass that hash to log in with `evil-winrm`:
 ```
 $ impacket-secretsdump 'administrator.htb'/'Ethan':'<REDACTED>'@'DC.ADMINISTRATOR.HTB' -just-dc-user 'Administrator'
 Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
