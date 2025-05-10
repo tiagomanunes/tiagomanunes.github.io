@@ -11,7 +11,8 @@ permalink: /feed.xml
     <language>en-us</language>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
 
-    {% for post in site.writeups %}
+    {% assign posts = site.writeups | sort: "date" | reverse %}
+    {% for post in posts %}
       {% if post.categories contains 'placeholder' %}
         {% continue %}
       {% endif %}
