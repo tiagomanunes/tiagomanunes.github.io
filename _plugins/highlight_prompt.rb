@@ -10,7 +10,8 @@ Jekyll::Hooks.register [:documents], :pre_render do |doc|
       /^\*Evil-WinRM\* PS .+?>\s+/,
       /^ftp>\s+/,
       /^SQL \(.+\)>\s+/,
-      /^PS .+?>\s+/
+      /^PS .+?>\s+/,
+      /^smb: .+>\s+/
     ]
 
     result = []
