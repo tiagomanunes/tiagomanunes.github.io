@@ -8,7 +8,9 @@ Jekyll::Hooks.register [:documents], :pre_render do |doc|
     prompt_patterns = [
       /^\$\s+/,
       /^\*Evil-WinRM\* PS .+?>\s+/,
-      /^ftp>\s+/
+      /^ftp>\s+/,
+      /^SQL \(.+\)>\s+/,
+      /^PS .+?>\s+/
     ]
 
     result = []
