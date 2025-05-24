@@ -7,7 +7,7 @@ provider: htb
 machine: escapetwo
 ---
 
-I think someone made a mistake. EscapeTwo was an easy-rated box, while [Administrator](administrator.md) was deemed medium, and to me they were clearly the other way around. That aside, this was an example of a box where I needed to act with practically no knowledge of the issue at hand. Some subjects are so narrow that they can mostly be learned then and there, but that was not the case here. Luckily, a cool little tool took my hand.
+I think someone made a mistake. EscapeTwo was an easy-rated box, while [Administrator](administrator) was deemed medium, and to me they were clearly the other way around. That aside, this was an example of a box where I needed to act with practically no knowledge of the issue at hand. Some subjects are so narrow that they can mostly be learned then and there, but that was not the case here. Luckily, a cool little tool took my hand.
 
 I'm making myself nervous teasing the content without saying anything concrete, so let's just dive in.
 
