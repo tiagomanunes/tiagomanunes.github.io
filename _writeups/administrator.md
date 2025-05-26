@@ -17,7 +17,22 @@ Now here I am, wanting to turn my career fully into offensive security, and havi
 
 The thing is, like [one of my favourite drummers](https://www.youtube.com/watch?v=2DdrwLk3pW8) once said, _"you become **really** old when you stop being willing to feel stupid for a bit"._ And boy did I feel stupid. I remember at some point asking what the difference was between a local user and a domain user. Hey, I'm no AD master now either, as a few upcoming write-ups will show. But at least I got to breeze through a box like this one. That's something. So this write-up is my way of telling you, if you find yourself doubting it, that it's _definitely_ worth it to feel stupid for a bit.
 
-Well, if you're still here, let's get back to the box. The exploitation chain is a series of ACL abuses, so BloodHound did all the work really. This made the Mission: Impossible theme feel a bit out of place, but still, lets go through it with the right soundtrack.
+Well, if you're still here, let's get back to the box. The exploitation chain is a series of ACL abuses, so BloodHound did all the work really:
+
+<div class="attack-chain">
+  {% include attack-step.html title="Enumerate Active Directory 1" description="Discovered that `Olivia` has `GenericAll` rights over `Michael`" type="enum" %}
+  {% include attack-step.html title="Lateral movement 1" description="Gained access to `Michael` by abusing `GenericAll` to change their password" type="lateral" %}
+  {% include attack-step.html title="Enumerate Active Directory 2" description="Discovered that `Michael` has `ForceChangePassword` rights over `Benjamin`" type="enum" %}
+  {% include attack-step.html title="Lateral movement 2" description="Gained access to `Benjamin` by changing their password" type="lateral" %}
+  {% include attack-step.html title="Enumerate FTP" description="Discovered backup of password database" type="foothold" %}
+  {% include attack-step.html title="Exploit weak credentials" description="Cracked password database with wordlist bruteforce, obtained credentials for `Emily`" type="attack" %}
+  {% include attack-step.html title="Enumerate Active Directory 3" description="Discovered that `Emily` has `GenericWrite` rights over `Ethan`" type="enum" %}
+  {% include attack-step.html title="Targeted Kerberoast" description="Abused `GenericWrite` to perform targeted Kerberoast on `Ethan`, and cracked the weak password" type="attack" %}
+  {% include attack-step.html title="Enumerate Active Directory 4" description="Discovered that `Ethan` has domain synchronisation rights" type="enum" %}
+  {% include attack-step.html title="DCSync" description="Performed DCSync attack to fully compromise the domain" type="root" %}
+</div>
+
+This made the Mission: Impossible theme feel a bit out of place, but still, lets go through it with the right soundtrack.
 
 ## Limp Bizkit's "Take a Look Around" on
 This box features an "assumed breach" scenario, and we start off with valid credentials. So uh... \[hacker voice\] _we're in_. Still, we need to know what to connect to, and we start the way we always start:

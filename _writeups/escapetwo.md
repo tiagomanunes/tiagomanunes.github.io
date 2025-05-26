@@ -13,7 +13,7 @@ I'm making myself nervous teasing the content without saying anything concrete, 
 
 <div class="attack-chain">
   {% include attack-step.html title="Enumerate SMB" description="Discovered SQL admin credentials in file share" type="enum" %}
-  {% include attack-step.html title="Foothold" description="Reverse shell connection via MSSQL's xp_cmdshell" type="attack" %}
+  {% include attack-step.html title="Foothold" description="Reverse shell connection via MSSQL's xp_cmdshell" type="foothold" %}
   {% include attack-step.html title="Enumerate file system" description="Discovered `sql_svc` credentials in server config" type="enum" %}
   {% include attack-step.html title="Lateral movement 1" description="Gained access to `ryan` account via password reuse" type="lateral" %}
   {% include attack-step.html title="Lateral movement 2" description="Abused `ryan` ACLs to take control of `ca_svc`" type="lateral" %}
@@ -317,7 +317,7 @@ $ evil-winrm -i 10.10.11.51 -u Administrator -H '7<REDACTED>f'
 ```
 
 ## Roll the credits
-- Can't believe I'm writing this as a lesson learned, but I often underestimate credential reuse.
+- Can't believe I'm writing this as a lesson learned, but I can't underestimate credential reuse.
 - This was my first venture into abusing ADCS, but I shortcut the learning to solve the box. That Academy module is on the list.
 - This episode didn't feature Dwight, and yet it was highly entertaining.
 - As always, for reading this far, you're a champ.

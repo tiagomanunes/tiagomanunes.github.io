@@ -7,7 +7,16 @@ provider: htb
 machine: underpass
 ---
 
-Underpass was a cool little box that served as a mini-test for methodology. With [Administrator](administrator) we talked about how I said that "if I don't learn anything, I won't write about it". This one made me go back to thinking that by that standard I'll probably write something about 99% of boxes, and Administrator was in that 1%. More often than not there will be something completely new that we'll have to adapt to. So this will be a short one, but I still think the process was interesting.
+Underpass was a cool little box that served as a mini-test for methodology. With [Administrator](/writeups/administrator) we talked about how I said that "if I don't learn anything, I won't write about it". This one made me go back to thinking that by that standard I'll probably write something about 99% of boxes, and Administrator was in that 1%. More often than not there will be something completely new that we'll have to adapt to. So this will be a short one, but I still think the process was interesting. Short story shorter:
+
+<div class="attack-chain">
+  {% include attack-step.html title="Enumerate SNMP" description="Discovered daloradius web app in SNMP public strings" type="enum" %}
+  {% include attack-step.html title="Exploit misconfiguration" description="Accessed web app using default credentials" type="attack" %}
+  {% include attack-step.html title="Enumerate web app" description="Discovered MD5-hashed password for `moshSvc`" type="enum" %}
+  {% include attack-step.html title="Foothold" description="Cracked password for `moshSvc` and logged in via SSH" type="foothold" %}
+  {% include attack-step.html title="Enumerate premissions" description="Discovered that `moshSvc` can run `mosh-server` with sudo" type="enum" %}
+  {% include attack-step.html title="Privilege escalation" description="Abuse sudo rights to get root shell" type="root" %}
+</div>
 
 ## Ambient dub techno music on
 `Nmap` showed us only SSH and HTTP ports on the initial and full TCP scans. Pointing a web browser at the machine found only a default post-install Apache page, so the next step, for me anyway, was to check for any hidden directories and virtual hosts, but both of these found nothing with decent wordlists.
