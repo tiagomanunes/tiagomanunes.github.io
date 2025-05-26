@@ -24,7 +24,7 @@ Well, if you're still here, let's get back to the box. The exploitation chain is
   {% include attack-step.html title="Lateral movement 1" description="Gained access to `Michael` by abusing `GenericAll` to change their password" type="lateral" %}
   {% include attack-step.html title="Enumerate Active Directory 2" description="Discovered that `Michael` has `ForceChangePassword` rights over `Benjamin`" type="enum" %}
   {% include attack-step.html title="Lateral movement 2" description="Gained access to `Benjamin` by changing their password" type="lateral" %}
-  {% include attack-step.html title="Enumerate FTP" description="Discovered backup of password database" type="foothold" %}
+  {% include attack-step.html title="Enumerate FTP" description="Discovered backup of password database" type="enum" %}
   {% include attack-step.html title="Exploit weak credentials" description="Cracked password database with wordlist bruteforce, obtained credentials for `Emily`" type="attack" %}
   {% include attack-step.html title="Enumerate Active Directory 3" description="Discovered that `Emily` has `GenericWrite` rights over `Ethan`" type="enum" %}
   {% include attack-step.html title="Targeted Kerberoast" description="Abused `GenericWrite` to perform targeted Kerberoast on `Ethan`, and cracked the weak password" type="attack" %}
