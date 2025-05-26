@@ -1,0 +1,23 @@
+<div class="attack-step {{ include.type }}">
+  <div class="marker">
+    {% if include.type == "enum" %}
+      ?
+    {% elsif include.type == "foothold" %}
+      ~
+    {% elsif include.type == "attack" %}
+      !
+    {% elsif include.type == "lateral" %}
+      >
+    {% elsif include.type == "privesc" %}
+      +
+    {% elsif include.type == "root" %}
+      #
+    {% else %}
+      x
+    {% endif %}
+  </div>
+  <div class="step-content">
+    <h4>{{ include.title }}</h4>
+    <p>{{ include.description }}</p>
+  </div>
+</div>

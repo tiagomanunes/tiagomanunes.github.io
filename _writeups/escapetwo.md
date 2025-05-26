@@ -7,9 +7,19 @@ provider: htb
 machine: escapetwo
 ---
 
-I think someone made a mistake. EscapeTwo was an easy-rated box, while [Administrator](administrator) was deemed medium, and to me they were clearly the other way around. That aside, this was an example of a box where I needed to act with practically no knowledge of the issue at hand. Some subjects are so narrow that they can mostly be learned then and there, but that was not the case here. Luckily, a cool little tool took my hand.
+I think someone made a mistake. EscapeTwo was an easy-rated box, while [Administrator](/writeups/administrator) was deemed medium, and to me they were clearly the other way around. That aside, this was an example of a box where I needed to act with practically no knowledge of the issue at hand. Some subjects are so narrow that they can mostly be learned then and there, but that was not the case here. Luckily, a cool little tool took my hand.
 
-I'm making myself nervous teasing the content without saying anything concrete, so let's just dive in.
+I'm making myself nervous teasing the content without saying anything concrete, so let's just dive in. A summary of today's hostilities:
+
+<div class="attack-chain">
+  {% include attack-step.html title="Enumerate SMB" description="Discovered SQL admin credentials in file share" type="enum" %}
+  {% include attack-step.html title="Foothold" description="Reverse shell connection via MSSQL's xp_cmdshell" type="attack" %}
+  {% include attack-step.html title="Enumerate file system" description="Discovered `sql_svc` credentials in server config" type="enum" %}
+  {% include attack-step.html title="Lateral movement 1" description="Gained access to `ryan` account via password reuse" type="lateral" %}
+  {% include attack-step.html title="Lateral movement 2" description="Abused `ryan` ACLs to take control of `ca_svc`" type="lateral" %}
+  {% include attack-step.html title="AD CS attacks" description="Exploited certificate template to uncover Administrator's hash" type="attack" %}
+  {% include attack-step.html title="Privilege escalation" description="Passed-the-hash to login as Administrator" type="root" %}
+</div>
 
 ## Electric Light Orchestra "Mr Blue Light" on
 This is another "assumed breach" scenario, so \[hacker voice\] _we're in_. We asked `Nmap` _where_ we're in, and found out we're in a regular everyday normal Active Directory domain controller, with the exception of an open MSSQL port.
