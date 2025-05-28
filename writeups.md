@@ -17,13 +17,13 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 ---
 
 {% assign writeups = site.writeups | reverse %}
-{% assign latest_writeup = writeups | first %}
+{% assign latest_retired_writeup = writeups | where: "retired", true | first %}
 
 ## Latest: {{ latest_writeup.title }}
 
-{{ latest_writeup.excerpt | replace: "h2", "h3" }}
+{{ latest_retired_writeup.excerpt | replace: "h2", "h3" }}
 
-[Read more]({{ latest_writeup.url }})
+[Read more]({{ latest_retired_writeup.url }})
 
 ---
 <div class="feed">
@@ -33,7 +33,7 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
   </div>
   <ul>
     {% for writeup in writeups %}
-      <li><a href="{{ writeup.url }}">{% if writeup.categories contains 'placeholder' %}active box{% else %}{{ writeup.date | date: "%Y-%m-%d" }}{% endif %} - {{ writeup.title }}</a></li>
+      <li><a href="{{ writeup.url }}">{% if writeup.retired == false %}active box{% else %}{{ writeup.date | date: "%Y-%m-%d" }}{% endif %} - {{ writeup.title }}</a></li>
     {% endfor %}
   </ul>
 </div>

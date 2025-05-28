@@ -2,9 +2,10 @@
 layout: post
 title: "Titanic"
 date: 2025-03-28
-categories: [htb, easy, placeholder]
+categories: [htb, easy]
 provider: htb
 machine: titanic
+retired: false
 ---
 
 ## To be revealed

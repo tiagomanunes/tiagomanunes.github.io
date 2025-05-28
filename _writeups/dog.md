@@ -2,9 +2,10 @@
 layout: post
 title: "Dog"
 date: 2025-04-09
-categories: [htb, easy, placeholder]
+categories: [htb, easy]
 provider: htb
 machine: dog
+retired: false
 ---
 
 ## To be revealed

@@ -5,6 +5,7 @@ date: 2025-04-21
 categories: [htb, medium]
 provider: htb
 machine: administrator
+retired: true
 ---
 
 Administrator currently holds the top spot for the easiest HTB box I've rooted, despite being rated Medium in difficulty. Maybe CPTS just did a great job of teaching me the basics of Active Directory penetration testing, but I did breeze through this machine, and the community rating seems to agree. Now I know what you're thinking: _I said I wouldn't write about a box if I didn't learn anything_. So what are we doing here?

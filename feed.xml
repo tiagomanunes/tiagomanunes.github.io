@@ -11,21 +11,16 @@ permalink: /feed.xml
     <language>en-us</language>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
 
-    {% assign posts = site.writeups | sort: "date" | reverse %}
-    {% for post in posts %}
-      {% if post.categories contains 'placeholder' %}
-        {% continue %}
-      {% endif %}
-      <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <link>{{ post.url | absolute_url }}</link>
-        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
-        <description>{{ post.excerpt | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <media:content url="{{ "/assets/images/writeup_og_image.png" | absolute_url }}" type="image/png">
-          <media:title>{{ post.title | xml_escape }}</media:title>
-        </media:content>
-      </item>
-    {% endfor %}
+    {% assign posts = site.writeups | where: "retired", true | sort: "date" | reverse %}
+    <item>
+      <title>{{ post.title | xml_escape }}</title>
+      <link>{{ post.url | absolute_url }}</link>
+      <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
+      <description>{{ post.excerpt | xml_escape }}</description>
+      <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+      <media:content url="{{ "/assets/images/writeup_og_image.png" | absolute_url }}" type="image/png">
+        <media:title>{{ post.title | xml_escape }}</media:title>
+      </media:content>
+    </item>
   </channel>
 </rss>

@@ -2,9 +2,10 @@
 layout: post
 title: "Fluffy"
 date: 2025-05-27
-categories: [htb, easy, placeholder]
+categories: [htb, easy]
 provider: htb
 machine: fluffy
+retired: false
 ---
 
 ## To be revealed

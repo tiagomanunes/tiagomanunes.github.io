@@ -5,6 +5,7 @@ date: 2025-05-24
 categories: [htb, easy]
 provider: htb
 machine: escapetwo
+retired: true
 ---
 
 I think someone made a mistake. EscapeTwo was an easy-rated box, while [Administrator](/writeups/administrator) was deemed medium, and to me they were clearly the other way around. That aside, this was an example of a box where I needed to act with practically no knowledge of the issue at hand. Some subjects are so narrow that they can mostly be learned then and there, but that was not the case here. Luckily, a cool little tool took my hand.

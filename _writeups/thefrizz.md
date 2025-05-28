@@ -2,9 +2,10 @@
 layout: post
 title: "TheFrizz"
 date: 2025-03-23
-categories: [htb, medium, placeholder]
+categories: [htb, medium]
 provider: htb
 machine: thefrizz
+retired: false
 ---
 
 ## To be revealed

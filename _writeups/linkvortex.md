@@ -5,6 +5,7 @@ date: 2025-04-12
 categories: [htb, easy]
 provider: htb
 machine: linkvortex
+retired: true
 ---
 
 Welcome! We are finally here: this is the first of my Honest Write-ups to be blinded by the light of day. I rooted my first few Hack The Box machines back in October/November last year, when I started [the CPTS path](https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist), but then focused on studying. It was actually during the exam that the idea for these came to mind. An honest report would be _very_ different. "The tester made a stupid typo and assumed the target machine was down", or "at this point, the tester was stuck for days". Now that CPTS is out of the way, I'm back to solving these machines, and will write honestly about them.
