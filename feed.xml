@@ -12,6 +12,7 @@ permalink: /feed.xml
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
 
     {% assign posts = site.writeups | where: "retired", true | sort: "date" | reverse %}
+    {% for post in posts %}
     <item>
       <title>{{ post.title | xml_escape }}</title>
       <link>{{ post.url | absolute_url }}</link>
@@ -22,5 +23,6 @@ permalink: /feed.xml
         <media:title>{{ post.title | xml_escape }}</media:title>
       </media:content>
     </item>
+    {% endfor %}
   </channel>
 </rss>
