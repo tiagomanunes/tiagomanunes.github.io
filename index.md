@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Home
+excerpt: The home of my Honest Write-ups, and other offensive security musings, all neon-lit.
 ---
 
 # Tiago Nunes

@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  {% assign meta_desc = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+  <meta name="description" content="{{ meta_desc }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="{{ page.title | escape }}" />
-  <meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}" />
+  <meta property="og:description" content="{{ meta_desc }}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
-  <meta property="og:type" content="article" />
+  {% if page.layout == "post" %}
+  <meta property="og:type" content="article">
+  {% else %}
+  <meta property="og:type" content="website">
+  {% endif %}
   <meta property="og:image" content="{{ site.url }}/assets/images/writeup_og_image.png" />
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
@@ -21,6 +27,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "/assets/icons/favicon-16x16.png" | relative_url }}">
   <link rel="icon" type="image/x-icon" href="{{ "/assets/icons/favicon.ico" | relative_url }}">
   <link rel="manifest" href="{{ "/site.webmanifest" | relative_url }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
 </head>
 <body>
   {% include nav.html %}

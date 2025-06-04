@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Honest Write-ups
+excerpt: Reading a write-up of a box can make us feel like we're miles behind. Not here. I'll tell you how it really went down.
 permalink: /writeups/
 ---
 
