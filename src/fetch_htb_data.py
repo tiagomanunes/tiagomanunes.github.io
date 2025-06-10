@@ -46,6 +46,13 @@ ENDPOINTS = {
     )
 }
 
+SUFFIXES = {1: 'st', 2: 'nd', 3: 'rd'}
+def make_ordinal(i: str) -> str:
+    """ From https://codereview.stackexchange.com/questions/41298/producing-ordinal-numbers """
+    if 10 <= int(i) % 100 <= 20:
+        return i + 'th'
+    return i + SUFFIXES.get(int(i) % 10, 'th')
+
 
 class APIError(Exception):
     """Explicit exception."""
@@ -84,12 +91,12 @@ data = asyncio.run(get_data())
 if data is not None:
     stats = {
         "rank_label": data["profile"]["rank_label"],
-        "rank_global": data["profile"]["rank_global"],
+        "rank_global": make_ordinal(data["profile"]["rank_global"]),
         "owns_user": data["profile"]["owns_user"],
         "owns_root": data["profile"]["owns_root"],
-        "best_rank": data["best"]["best_rank"],
+        "best_rank": make_ordinal(data["best"]["best_rank"]),
         "best_date": data["best"]["best_date"],
-        "rank_country": data["country"],
+        "rank_country": make_ordinal(data["country"]),
         "current_prolab": CURRENT_PROLAB,
         "prolab_owned_flags": data["prolab"]["owned_flags"],
         "prolab_total_flags": data["prolab"]["total_flags"],
