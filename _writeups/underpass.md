@@ -8,7 +8,7 @@ machine: underpass
 retired: true
 ---
 
-Underpass was a cool little box that served as a mini-test for methodology. With [Administrator](/writeups/administrator) we talked about how I said that "if I don't learn anything, I won't write about it". This one made me go back to thinking that by that standard I'll probably write something about 99% of boxes, and Administrator was in that 1%. More often than not there will be something completely new that we'll have to adapt to. So this will be a short one, but I still think the process was interesting. Short story shorter:
+Underpass was a cool little box that served as a mini-test for methodology. With [Administrator](/writeups/administrator/) we talked about how I said that "if I don't learn anything, I won't write about it". This one made me go back to thinking that by that standard I'll probably write something about 99% of boxes, and Administrator was in that 1%. More often than not there will be something completely new that we'll have to adapt to. So this will be a short one, but I still think the process was interesting. Short story shorter:
 
 <div class="attack-chain">
   {% include attack-step.html title="Enumerate SNMP" description="Discovered daloradius web app in SNMP public strings" type="enum" %}

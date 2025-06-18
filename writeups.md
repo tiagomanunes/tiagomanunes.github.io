@@ -20,7 +20,7 @@ Hopefully that makes this yet-another-writeup-blog worth reading!
 {% assign writeups = site.writeups | reverse %}
 {% assign latest_retired_writeup = writeups | where: "retired", true | first %}
 
-## Latest: {{ latest_writeup.title }}
+## Latest: {{ latest_retired_writeup.title }}
 
 {{ latest_retired_writeup.excerpt | replace: "h2", "h3" }}
 

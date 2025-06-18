@@ -8,7 +8,7 @@ machine: escapetwo
 retired: true
 ---
 
-I think someone made a mistake. EscapeTwo was an easy-rated box, while [Administrator](/writeups/administrator) was deemed medium, and to me they were clearly the other way around. That aside, this was an example of a box where I needed to act with practically no knowledge of the issue at hand. Some subjects are so narrow that they can mostly be learned then and there, but that was not the case here. Luckily, a cool little tool took my hand.
+I think someone made a mistake. EscapeTwo was an easy-rated box, while [Administrator](/writeups/administrator/) was deemed medium, and to me they were clearly the other way around. That aside, this was an example of a box where I needed to act with practically no knowledge of the issue at hand. Some subjects are so narrow that they can mostly be learned then and there, but that was not the case here. Luckily, a cool little tool took my hand.
 
 I'm making myself nervous teasing the content without saying anything concrete, so let's just dive in. A summary of today's hostilities:
 
@@ -22,7 +22,7 @@ I'm making myself nervous teasing the content without saying anything concrete, 
   {% include attack-step.html title="Privilege escalation" description="Passed-the-hash to login as Administrator" type="root" %}
 </div>
 
-## Electric Light Orchestra "Mr Blue Light" on
+## Electric Light Orchestra "Mr Blue Sky" on
 This is another "assumed breach" scenario, so \[hacker voice\] _we're in_. We asked `Nmap` _where_ we're in, and found out we're in a regular everyday normal Active Directory domain controller, with the exception of an open MSSQL port.
 
 Before moving further I let my trusty BloodHound sniff around, after he'd practically solved the Administrator box on its own.
