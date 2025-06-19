@@ -243,7 +243,7 @@ $ ls -lah /var/quarantined/
 lrwxrwxrwx  1 bob  bob     8 Apr  8 12:46 dude.png -> dude.txt
 ```
 
-It was still pointing to a `dude.txt` file, which was still on my current working directory... so that couldn't possibly work. Lets try with a full path instead:
+It was still pointing to a `dude.txt` file, which was still on my current working directory... so that couldn't possibly work. Let's try with a full path instead:
 ```
 $ ln -s /etc/shadow dude.txt
 $ ln -s /tmp/.ICE-unix/.dontcheat/dude.txt dude.png

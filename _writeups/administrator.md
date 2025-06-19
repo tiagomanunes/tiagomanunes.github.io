@@ -33,7 +33,7 @@ Well, if you're still here, let's get back to the box. The exploitation chain is
   {% include attack-step.html title="DCSync" description="Performed DCSync attack to fully compromise the domain" type="root" %}
 </div>
 
-This made the Mission: Impossible theme feel a bit out of place, but still, lets go through it with the right soundtrack.
+This made the Mission: Impossible theme feel a bit out of place, but still, let's go through it with the right soundtrack.
 
 ## Limp Bizkit's "Take a Look Around" on
 This box features an "assumed breach" scenario, and we start off with valid credentials. So uh... \[hacker voice\] _we're in_. Still, we need to know what to connect to, and we start the way we always start:

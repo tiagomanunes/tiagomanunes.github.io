@@ -185,7 +185,7 @@ $ pipx install certipy-ad
 
 Another note: after a couple of years of inactivity, the project _just_ released (at the time of writing) [a new version 5](https://github.com/ly4k/Certipy/discussions/270). I had solved the box and documented it with the then-latest version 4.8.2, and have not re-tested the commands for this write-up, so your mileage may vary.
 
-Notes aside, lets get back into it. Using `certipy` with Ryan's account didn't give us anything unfortunately:
+Notes aside, let's get back into it. Using `certipy` with Ryan's account didn't give us anything unfortunately:
 ```
 $ certipy find -u 'ryan@sequel.htb' -p '<REDACTED>' -dc-ip '10.10.11.51' -vulnerable -stdout
 
@@ -203,7 +203,7 @@ Certificate Authorities
 Certificate Templates                   : [!] Could not find any certificate templates
 ```
 
-I assumed this was due to that `E_ACCESSDENIED` error, so lets own that `ca_svc` account first. There seems to be a clean-up script in place here, so these steps all the way through generating certificates need to be done relatively quickly. Command-line history to the rescue. I can't imagine playing this during its first week, it must have been chaos with players stepping on each other's toes. Anyway, following BloodHound's instructions we'll use Impacket to take ownership of the user account and give ourselves full rights over it:
+I assumed this was due to that `E_ACCESSDENIED` error, so let's own that `ca_svc` account first. There seems to be a clean-up script in place here, so these steps all the way through generating certificates need to be done relatively quickly. Command-line history to the rescue. I can't imagine playing this during its first week, it must have been chaos with players stepping on each other's toes. Anyway, following BloodHound's instructions we'll use Impacket to take ownership of the user account and give ourselves full rights over it:
 ```
 $ impacket-owneredit -action write -new-owner 'ryan' -target 'ca_svc' 'sequel.htb'/'ryan':'<REDACTED>'
 
