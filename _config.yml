@@ -7,11 +7,19 @@ collections:
   writeups:
     output: true
     permalink: /writeups/:title/
+  articles:
+    output: true
+    permalink: /articles/:title/
 
 defaults:
   - scope:
       path: ""
       type: writeups
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: articles
     values:
       layout: "post"
 
