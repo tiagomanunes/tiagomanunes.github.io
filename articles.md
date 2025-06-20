@@ -7,6 +7,10 @@ permalink: /articles/
 
 # Articles
 {% assign articles = site.articles | reverse %}
+<div>
+    <ul>
 {% for article in articles %}
-    <li><a href="{{ article.url }}">{{ article.date | date: "%Y-%m-%d" }} - {{ article.title }}</a></li>
+        <li><a href="{{ article.url }}">{{ article.date | date: "%Y-%m-%d" }} - {{ article.title }}</a></li>
 {% endfor %}
+    </ul>
+</div>
