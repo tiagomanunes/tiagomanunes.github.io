@@ -13,12 +13,12 @@ Welcome! We are finally here: this is the first of my Honest Write-ups to be bli
 LinkVortex, and another easy-rated machine that I won't name yet (still active), made me worry. I had stumbled my way to root on a few easy boxes at the start of my CPTS path. I rooted a few more after CPTS, graduating to medium machines and feeling almost at ease. Then I tried that other easy one, and I got _nothing_. Staring at a web application's login page, all the enumeration steps I knew of done, all the very few options exhausted. Stunned, I set it aside and moved on to LinkVortex, one week before its retirement. Spoiler alert:
 
 <div class="attack-chain">
-  {% include attack-step.html title="Enumerate web server" description="Discovered `dev` subdomain by virtual host bruteforcing, and `.git` web directory by directory bruteforcing" type="enum" %}
-  {% include attack-step.html title="Enumerate git repository" description="Discovered credentials in earlier version of the git repository" type="enum" %}
-  {% include attack-step.html title="Arbitrary file read CVE" description="Discovered credentials for user `bob` via CVE-2023-40028" type="attack" %}
-  {% include attack-step.html title="Foothold" description="Logged in as user `bob` via SSH" type="foothold" %}
-  {% include attack-step.html title="Enumerate premissions" description="Discovered that `bob` can run a cleanup script with sudo" type="enum" %}
-  {% include attack-step.html title="Privilege escalation" description="Abuse sudo rights and script vulnerability to get root shell" type="root" %}
+  {% include attack-step.html title="Enumerate web server" description="Discovered `dev` subdomain by virtual host bruteforce, and `.git` directory by content bruteforce" type="enum" %}
+  {% include attack-step.html title="Analyse git repository" description="Recovered credentials in git repository history" type="enum" %}
+  {% include attack-step.html title="Exploit file read vulnerability" description="Extracted `bob`'s credentials via CVE-2023-40028" type="attack" %}
+  {% include attack-step.html title="Foothold" description="Logged into SSH as user `bob`" type="foothold" %}
+  {% include attack-step.html title="Enumerate permissions" description="Discovered that `bob` can run a cleanup script as `root` via sudo" type="enum" %}
+  {% include attack-step.html title="Privilege escalation" description="Exploited insecure script and sudo rights to gain root shell" type="root" %}
 </div>
 
 ## Up-beat retro synthwave music on
