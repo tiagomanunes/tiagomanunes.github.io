@@ -31,7 +31,7 @@ PORT   STATE SERVICE REASON         VERSION
 Service Info: Host: titanic.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-Logistics (`/etc/hosts`) taken care of, we go have a look at the web app, which lets you book a ticket on the Titanic. I wouldn't, if I were you. But it looks like we have to, so we do, and it immediately triggers the download of a JSON file containing whatever details we provided.
+Logistics (`/etc/hosts`) taken care of, we go have a look at the web app, which lets you book a ticket on the Titanic. I wouldn't, if I were you. But it looks like we have to, so we do, and it immediately triggers the download of a JSON file containing whatever details we provided, for example, `http://titanic.htb/download?ticket=53b1bb14-044c-4b9b-9d19-f7e17b97ad92.json`.
 
 There's nothing interesting about the file itself and it doesn't look like it can be abused much. But every time we have an endpoint that lets us download a file by name we are compelled to just try something and see what happens... and sure enough it is vulnerable to arbitrary file read via path traversal:
 ```
