@@ -11,7 +11,9 @@ Jekyll::Hooks.register [:documents], :pre_render do |doc|
       /^ftp>\s+/,
       /^SQL \(.+\)>\s+/,
       /^PS .+?>\s+/,
-      /^smb: .+>\s+/
+      /^smb: .+>\s+/,
+      /^sqlite>\s+/,
+      /^(\S+?)@(\S+?):(\S+?)[$|#]\s+/
     ]
 
     result = []

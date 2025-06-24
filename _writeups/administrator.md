@@ -8,7 +8,7 @@ machine: administrator
 retired: true
 ---
 
-Administrator currently holds the top spot for the easiest HTB box I've rooted, despite being rated Medium in difficulty. Maybe CPTS just did a great job of teaching me the basics of Active Directory penetration testing, but I did breeze through this machine, and the community rating seems to agree. Now I know what you're thinking: _I said I wouldn't write about a box if I didn't learn anything_. So what are we doing here?
+Administrator currently holds the top spot for the easiest HTB box I've rooted, despite being rated Medium in difficulty. Maybe [CPTS](/articles/oscp-via-cpts/) just did a great job of teaching me the basics of Active Directory penetration testing, but I did breeze through this machine, and the community rating seems to agree. Now I know what you're thinking: _I said I wouldn't write about a box if I didn't learn anything_. So what are we doing here?
 
 I thought about it for a while. The main goal of these honest write-ups is that they can be relatable for others who are also fresh in the field of offensive security. And even though the box itself was easy, there is still a story here that I hope can help. At the risk of putting you to sleep, I'll have to give a bit of context on my background.
 
