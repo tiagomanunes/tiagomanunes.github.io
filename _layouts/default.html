@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  {% if page.collection == "writeups" %}
+    {% assign custom_title = page.title | append: " – an Honest Write-up" %}
+  {% else %}
+    {% assign custom_title = page.title %}
+  {% endif %}
   {% assign meta_desc = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
   <meta name="description" content="{{ meta_desc }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="4Nk00Y6qv4XHcWx4qwlB3awkZzR9zL0nYWVvkulUbV4" />
-  <meta property="og:title" content="{{ page.title | escape }}" />
+  <meta property="og:title" content="{{ custom_title | escape }}" />
   <meta property="og:description" content="{{ meta_desc }}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   {% if page.layout == "post" %}
@@ -15,7 +20,7 @@
   <meta property="og:type" content="website">
   {% endif %}
   <meta property="og:image" content="{{ site.url }}/assets/images/writeup_og_image.png" />
-  <title>{{ page.title }}</title>
+  <title>{{ custom_title }}</title>
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
