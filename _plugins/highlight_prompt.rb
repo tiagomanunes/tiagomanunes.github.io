@@ -13,6 +13,7 @@ Jekyll::Hooks.register [:documents], :pre_render do |doc|
       /^PS .+?>\s+/,
       /^smb: .+>\s+/,
       /^sqlite>\s+/,
+      /^mysql>\s+/,
       /^(\S+?)@(\S+?):(\S+?)[$|#]\s+/
     ]
 
