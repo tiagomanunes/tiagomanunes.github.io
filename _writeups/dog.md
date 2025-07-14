@@ -13,7 +13,7 @@ Remember the intro to [LinkVortex](/writeups/linkvortex/)? I talked about gettin
 <div class="attack-chain">
   {% include attack-step.html title="Enumerate web server" description="Discovered `.git` directory by content bruteforce" type="enum" %}
   {% include attack-step.html title="Analyse git repository" description="Checked out git repository and discovered credentials in source code" type="enum" %}
-  {% include attack-step.html title="Abuse plugin system for RCE" description="Logged into admin panel and obtained RCE via malicious plugin" type="attack" %}
+  {% include attack-step.html title="Abuse plugin system for RCE" description="Logged into Backdrop admin panel and obtained RCE via malicious plugin" type="attack" %}
   {% include attack-step.html title="Foothold" description="Reused credentials to log into SSH as user `johncusack`" type="foothold" %}
   {% include attack-step.html title="Enumerate permissions" description="Discovered that `johncusack` can run `bee` as root via sudo" type="enum" %}
   {% include attack-step.html title="Privilege escalation" description="Abused arbitrary code evaluation in `bee` to gain root shell via sudo" type="root" %}
@@ -59,11 +59,11 @@ $ curl "http://10.10.11.58/files/config_83dddd18e1ec67fd8ff5bba2453c7fb3/active/
 ```
 
 ## Tail between my legs
-Next up, virtual host discovery. Nothing. I tried some more brute-forcing of those subdirectories, parameter fuzzing of the CMS's API, nothing. A `robots.txt` file exists, and contains a few possible leads, but also ultimately lead nowhere. UDP scan, negative as well. Searching for vulnerabilities on Backdrop only found an authenticated RCE issue, so we'd need credentials first. Apache 2.4.41 has its share of vulnerabilities as well but nothing actionable, and all definitely out of place in a supposedly Easy box.
+Next up, virtual host discovery. Nothing. I tried some more brute-forcing of those subdirectories, parameter fuzzing of the CMS's API, nothing. A `robots.txt` file exists, and contains a few possible leads, but also ultimately leads nowhere. UDP scan, negative as well. Searching for vulnerabilities on Backdrop only found an authenticated RCE issue, so we'd need credentials first. Apache 2.4.41 has its share of vulnerabilities as well but nothing actionable, and all definitely out of place in a supposedly Easy box.
 
-This was looking interesting, or like I said in LinkVortex, worrying for the [OSCP aspirer](/articles/oscp-via-cpts/) in me at the time. The checklist of things to try was running thinner, so I went back to the site's content, since there was lots of it and _surely_ I had missed something. I could swear I read somewhere that the hash in the configuration directory name (`config_83dddd18e1ec67fd8ff5bba2453c7fb3`) was a checksum of the site's database connection string, so I scripted something up to try a small brute-force, but there were simply too many variables to look plausible (DBMS, username, host, database name, and of course the password). I'm glad I abandoned that path, because in researching for this write-up, it looks like the hash is very much _not_ derived from the connection string, and I don't know where I got that idea from.
+This was looking interesting, or like I said in LinkVortex, _worrying_ for the [OSCP aspirer](/articles/oscp-via-cpts/) in me at the time. The checklist of things to try was running thinner, so I went back to the site's content, since there was lots of it and _surely_ I had missed something. I could swear I read somewhere that the hash in the configuration directory name (`config_83dddd18e1ec67fd8ff5bba2453c7fb3`) was a checksum of the site's database connection string, so I scripted something up to try a small brute-force, but there were simply too many variables to look plausible (DBMS, username, host, database name, and of course the password). I'm glad I abandoned that path, because in researching for this write-up, it looks like the hash is very much _not_ derived from the connection string, and I don't know where I got that idea from.
 
-Out of ideas, this was where I first stepped away from the machine. With LinkVortex I remembered that `nikto` was a thing and that I should keep it in my checklist, even if it's at the end. Once again it was `nikto` that found the `.git` directory:
+Out of ideas, this was where I first stepped away from the machine. With [LinkVortex](/writeups/linkvortex/) I remembered that `nikto` was a thing and that I should keep it in my checklist, even if it's at the end. Once again it was `nikto` that found the `.git` directory:
 ```
 $ nikto -h dog.htb
 <SNIP>
@@ -73,7 +73,7 @@ $ nikto -h dog.htb
 <SNIP>
 ```
 
-And yeah, lesson learned from these two boxes, the `common.txt` directory wordlist would have found this and more. Just like in the other box though, the excitement was short-lived, because simply browsing through the `.git` database files didn't yield much of interest. The latest commit message told me about "url aliases", so I spent some time trying to find some, looking for new information:
+And yeah, lesson learned from these two boxes, the `common.txt` directory wordlist would have found this and more. Just like in the other box though, the excitement was short-lived, because simply browsing through the `.git` database files didn't yield much of interest. The latest commit message told me about "url aliases", so I spent some time researching those, trying to find a way to exploit them:
 ```
 $ curl "http://10.10.11.58/.git/logs/HEAD"                                                                                     
 0000000000000000000000000000000000000000 8204779c764abd4c9d8d95038b6d22b6a7515afa root <dog@dog.htb> 1738963331 +0000   commit (initial): todo: customize url aliases. reference:https://docs.backdropcms.org/documentation/url-aliases
@@ -105,7 +105,7 @@ When exploits are this simple I prefer to do things manually - you can always le
 $ cat backup/backup.info                                       
 type = module
 name = Shell
-description = Just a shell. Blocks are boxes of content rendered into an area, or region, of a web page.
+description = Just a shell.
 package = Layouts
 tags[] = Shells
 tags[] = Site Architecture
@@ -164,7 +164,7 @@ mysql> select name, pass from users;
 
 It turns out that the site uses [an annoying mechanism](https://docs.backdropcms.org/api/backdrop/core%21includes%21password.inc/function/_password_crypt/1) to hash the passwords, including a last step that truncates the final hash, negating the use of tools like `hashcat` out of the box. So if we were to crack this by brute-force we'd have to script something together. I decided to leave this and come back to it later if needed, and _spoiler alert_, I'm glad I did.
 
-I was preparing for the OSCP and its 24h exam at the time, so I had been trying to avoid going too deep into rabbit-holes before exhausting other paths that could prove to be of least resistance. First, since I had access to the database I checked the mysql users table, but only root is in it and we knew that password already. Then I looked around the file system some more, but there wasn't much to be found. Then, I remembered the lesson that I keep having to re-learn, and begrudgingly tried the to reuse our only password on `jobert` and `johncusack`... 
+I was preparing for the OSCP and its 24h exam at the time, so I had been trying to avoid going too deep into rabbit-holes before exhausting other paths that could prove to be of least resistance. First, since I had root access to the database I checked the mysql users table, but only root is in it and we knew that password already. Then I looked around the file system some more, but there wasn't much to be found. Then, I remembered the lesson that I keep having to re-learn, and begrudgingly tried the to reuse our only password on `jobert` and `johncusack`... 
 ```
 $ ssh johncusack@dog.htb
 johncusack@dog.htb's password: 
