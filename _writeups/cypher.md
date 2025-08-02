@@ -234,7 +234,7 @@ class pwn(BaseModule):
         pty.spawn("/bin/bash")
 ```
 
-Modules are apparently loaded from some default location, which maybe we could write to. But the module explains how to [load modules from custom locations](https://www.blacklanternsecurity.com/bbot/Stable/dev/module_howto/#load-modules-from-custom-locations) via [presets](https://www.blacklanternsecurity.com/bbot/Stable/scanning/presets/#how-to-use-presets-p), so picking from different parts of the manual I cobbled together another bare-bones preset yaml file: 
+Modules are apparently loaded from some default location, which maybe we could write to. But the manual explains how to [load modules from custom locations](https://www.blacklanternsecurity.com/bbot/Stable/dev/module_howto/#load-modules-from-custom-locations) via [presets](https://www.blacklanternsecurity.com/bbot/Stable/scanning/presets/#how-to-use-presets-p), so picking from different parts of the manual I cobbled together another bare-bones preset yaml file: 
 ```
 graphasm@cypher:~$ cat modules.yml 
 description: pwn
@@ -264,7 +264,7 @@ root@cypher:/home/graphasm#
 ```
 
 ## Roll the credits
-- Slow is smooth, and smooth is fast. Letting it _hit_ that I was dealing with Cypher, not SQL, and with 'sh' and not 'bash', for example, would have saved a lot of time.
+- Slow is smooth, and smooth is fast. Letting it _hit_ that I was dealing with Cypher, not SQL, and with `sh` and not `bash`, for example, would have saved a lot of time.
 - Decode and check your URL-encoded payloads sooner rather than later, when they don't work.
 - Tools are great, and we stand on the shoulders of giants, but trust your ability to exploit something manually and to learn a ton in the process.
 - As always, for reading this far, you're a champ.
