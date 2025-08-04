@@ -8,10 +8,10 @@ machine: code
 retired: true
 ---
 
-Code was the first box that made me consider getting Hack The Box's VIP+ subscription, to peacefully work on it without other players' interference. Stability is one thing, but it's just too easy to get spoiled. Somehow, though, the box ended up being more fun as a consequence of being partially spoiled. You'll see why.
+Code was the first box that made me consider getting Hack The Box's VIP+ subscription, to peacefully work on it without other players' interference. Stability is one thing, but it's just too easy to get spoiled. Somehow, though, being partially spoiled ended up making this box more fun. You'll see why.
 
 <div class="attack-chain">
-  {% include attack-step.html title="RCE via restriction bypass" description="Obtained reverse shell connection by bypassing keyword restrictions on Python interpreter" type="attack" %}
+  {% include attack-step.html title="RCE via restriction bypass" description="Obtained reverse shell connection by bypassing keyword restrictions in Python interpreter" type="attack" %}
   {% include attack-step.html title="Enumerate file system" description="Discovered MD5 hashes of credentials in application database" type="enum" %}
   {% include attack-step.html title="Foothold" description="Cracked weak passwords and logged into SSH as user `martin`" type="foothold" %}
   {% include attack-step.html title="Enumerate permissions" description="Discovered that `martin` can run backup script as root via sudo" type="enum" %}
@@ -36,11 +36,11 @@ Pointing the browser at this "Gunicorn" HTTP server found a Python interpreter: 
 Before I started trying too hard, I searched for known vulnerabilities on Gunicorn 20.0.4. Turns out it is possible to perform [request smuggling](https://grenfeldt.dev/2021/04/01/gunicorn-20.0.4-request-smuggling/), which I had to read up on, but it didn't seem useful until I knew what to target in the first place. Nothing else popped up, so it looked like we were stuck trying to break free from this restricted keyword jail.
 
 ## Why this write-up exists
-I told you I wouldn't write these if I didn't learn anything. This part is where the learning happened. While the [Command Injections](https://academy.hackthebox.com/course/preview/command-injections) module on HTB Academy had given me plenty of ideas for bypassing exclusion lists in general, I'd never had to do this with the Python language, with which I still had a hack-something-together kind of relationship with.
+I told you I wouldn't write these if I didn't learn anything. This part is where the learning happened. While the [Command Injections](https://academy.hackthebox.com/course/preview/command-injections) module on HTB Academy had given me plenty of ideas for bypassing exclusion lists in general, I'd never had to do this with the Python language, with which I still had a hack-something-together kind of relationship.
 
 Slowly going through just that one-liner above, we can find out that `import`, `os`, `(p)open`, and even `read` are restricted. The only other thing I knew was that anything that I could turn into a string to be interpreted would be easy to bypass with concatenation - for example, `print("os")` would be restricted, but `print("o"+"s")` wouldn't.
 
-This helped scan through [Hacktricks](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/python/bypass-python-sandboxes/index.html?highlight=python%20sandbox#bypass-python-sandboxes)' _immense_ list of things to try, looking for what could work. `system`, `exec` and `eval` adding to the list of restrictions didn't leave that many options open, especially when trying to get a reverse shell. One thing that stood out was that despite not being able to use `import`, I was able to use `sys.modules["<some module>"]`. Together with the string concatenation trick, that got us _very_ close to a reverse shell.
+This helped with scanning through [Hacktricks](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/python/bypass-python-sandboxes/index.html?highlight=python%20sandbox#bypass-python-sandboxes)' _immense_ list of things to try, looking for what could work under these limitations. `system`, `exec` and `eval` adding to the list of restrictions didn't leave that many options open, especially when trying to get a reverse shell. One thing that stood out was that despite not being able to use `import`, I was able to use `sys.modules["<some module>"]`. Together with the string concatenation trick, that got us _very_ close to a reverse shell.
 
 I started from the following reverse shell example from [Revshells](https://revshells.com):
 ```
@@ -103,9 +103,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 I load them up on the browser, weirdly they show the same content but hey, I'm not complaining. There's a `tar.bz2` archive that I can get, and it seems to contain the app's source code! And the `sqlite` database that manages the users, so I can get user's password hashes, and they crack! I use them to SSH in and this guy has sudo rights to a backup script, and...
 
-... wait, what? What was the point of that whole Gunicorn app then? It dawned on me that I had probably just cheesed the box using some other player's work, and sure enough, at the next box reset those HTTP servers weren't there anymore. So I stopped and went back to figuring out how to get a shell out of this.
+... wait, _what?_ What was the point of that whole Gunicorn app then? It dawned on me that I had probably just cheesed the box using some other player's work, and sure enough, at the next box reset those HTTP servers weren't there anymore. So I stopped and went back to figuring out how to get a shell out of this.
 
-Flashback over, we're back to realising that we'd need to import `pty` to get our reverse shell to work, and the thought comes to mind that spawning an HTTP server would probably be a whole lot easier. And I was right, again thanks to the necessary modules already being loaded:
+Flashback over, and we're back to realising that we'd need to import `pty` to get our reverse shell to work, and thinking that this was getting too complicated. The thought came to mind that spawning an HTTP server would probably be a whole lot easier, and indeed it was, again thanks to the necessary modules already being loaded:
 ```
 PORT = 54322
 
@@ -116,7 +116,7 @@ with sys.modules["socketserver"].TCPServer(("", PORT), Handler) as httpd:
     httpd.serve_forever()
 ```
 
-But I felt spoiled. Would I have thought of this if I hadn't seen someone else do it? But also, the reverse shell felt so close now... so I kept looking, and I'm glad I did.
+But I felt spoiled. Would I have thought of this if I hadn't seen someone else do it? And also, the reverse shell felt so close now... so I kept looking, and I'm glad I did.
 
 ## Why this write-up exists, continued
 Ok, so, we need to figure out a way to import `pty`. I mean, there's got to be one, right? Scrolling down that immense list of Hacktricks, most everything needs an `eval` or an `exec`, until hope is briefly restored in the [Builtins section](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/python/bypass-python-sandboxes/index.html?highlight=python%20sandbox#builtins), with the sentence _"If you can access the `__builtins__` object you can import libraries"_. I say briefly because, sure enough, `__builtins__` is part of the restricted keyword list.
@@ -179,9 +179,7 @@ $ cat app.py
 Hashcat cracks both easily, but only Martin's is useful to us:
 ```
 $ hashcat 3<REDACTED>e rockyou.txt -m 0
-
 <SNIP>
-
 3<REDACTED>e:<REDACTED>
 ```
 
@@ -230,7 +228,7 @@ $ echo "../../before/....//....//after" |awk '{ gsub("\\.\\./", ""); print }'
 before/../../after
 ```
 
-So all we have to do is prepare our `task.json` accordingly to get a backup of the `/root/` directory. The important bit is the `directories_to_archive` field, but you can also see my cute little attempt to both hide and prevent spoiling other people and also make them feel guilty for looking:
+So all we have to do is prepare our `task.json` accordingly to get a backup of the `/root/` directory. The important bit is the `directories_to_archive` field, but you can also see my cute little attempt to both hide and prevent spoiling other people, and also make them feel guilty for looking:
 ```
 martin@code:/tmp/.XIM-unix/.dontcheat$ cat task.json 
 {
@@ -246,7 +244,7 @@ martin@code:/tmp/.XIM-unix/.dontcheat$ cat task.json
 }
 ```
 
-Now we just call the script with `sudo`, unpack the archive and get that root flag! Luckily, in case we wanted a shell, we also get a key:
+Now we just call the script with `sudo`, unpack the archive and get that root flag! Luckily, in case we wanted a shell, we also get an SSH private key:
 ```
 martin@code:/tmp/.XIM-unix/.dontcheat$ sudo /usr/bin/backy.sh task.json 
 2025/07/31 18:15:40 🍀 backy 1.2
