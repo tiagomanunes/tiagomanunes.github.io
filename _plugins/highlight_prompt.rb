@@ -11,10 +11,11 @@ Jekyll::Hooks.register [:documents], :pre_render do |doc|
       /^ftp>\s+/,
       /^SQL \(.+\)>\s+/,
       /^PS .+?>\s+/,
+      /^C:\\.+?>\s+/, # cmd prompt, will do for now
       /^smb: .+>\s+/,
       /^sqlite>\s+/,
       /^mysql>\s+/,
-      /^(\S+?)@(\S+?):(\S+?)[$|#]\s+/
+      /^(\S+?)@(\S+?):([^\t\r\n\v\f]+?)[$|#]\s+/ # allowing space characters in cwd
     ]
 
     result = []

